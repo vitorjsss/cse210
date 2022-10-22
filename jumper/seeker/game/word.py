@@ -26,10 +26,11 @@ class Word:
             string: The user's input as text.
         """
         words = ["apple", "banana", "city", "secular", "robot", "Ireland", "ant", "mars", "low", "sports", "car", "tree", "wolf", "sheep", "perpendicular", "cake", "meal"]
-        self.random_word = random.randint(words) #generates random word from the list
+        self.random_word = random.choice(words) #generates random word from the list
         self.word = list(self.random_word)
         return self.word #return random word
     
     def generate_hidden_word(self):
         for i in range(len(self.word)):
             self.hidden_word.append(' _ ')
+        return self.hidden_word

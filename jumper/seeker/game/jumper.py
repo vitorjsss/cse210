@@ -15,12 +15,13 @@ class Jumper:
             self (jumper): An instance of Jumper.
         """
         self.jumper = ['    ___', '   /___\\', '   \\   /', '    \\ /', '     0', '   / | \\', '    / \\', '', '^^^^^^^^^^^^']
+        self.choices = []
     
     def display_jumper(self):
         for i in range(len(self.jumper)):
             print(self.jumper[i])
 
-    def update_jumper(self):
+    def update_jumper(self, letter, alphabet):
         """Gets a hint for the seeker.
 
         Args:
@@ -29,7 +30,11 @@ class Jumper:
         Returns:
             string: A hint for the seeker.
         """
-        if self.jumper[0] == '     0':
-            self.jumper[0] == '     X'
+        letter = letter.lower()
+        if letter in alphabet:
+            if self.jumper[0] == '     0':
+                self.jumper[0] == '     X'
+            else:
+                del self.jumper[0]
         else:
-            del self.jumper[0]
+            print('Invalid entry! Type one letter [a-z]')

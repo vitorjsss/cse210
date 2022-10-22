@@ -25,12 +25,16 @@ class Director:
         self._jumper = Jumper()
         self.guess_word = self._word.generate_word()
         self.hidden_word = self._word.generate_hidden_word()
-        hidden_word_display = ''
+        self.hidden_word_display = ''
         for i in range(len(self.hidden_word)):
-            hidden_word_display += ' _ '
-        print(hidden_word_display)
+            self.hidden_word_display += ' _ '
+        print(self.hidden_word_display)
         self._jumper.display_jumper()
-       
+        self._is_playing = True
+        self.alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        self.choices = []
+
+
     def start_game(self):
         """Starts the game by running the main game loop.
         
@@ -57,9 +61,9 @@ class Director:
             self (Director): An instance of Director.
         """
         if self.letter not in self.guess_word:
-            self._jumper.update_jumper()
+            self._jumper.update_jumper(self.letter, self.alphabet)
         else:
-            self._check.check_letter(self.hidden_word, self.letter, self.guess_word)
+            self._check.check_letter(self.hidden_word, self.letter, self.guess_word, self.choices)
         
     def _do_outputs(self):
         """Provides a hint for the seeker to use.
@@ -73,5 +77,9 @@ class Director:
             print('\nGame over!')
             self._is_playing = False
         else:
-            print(self.hidden_word)
-            print(self._jumper.jumper)
+            self.hidden_word_display = ''
+            for i in range(len(self.hidden_word)):
+                self.hidden_word_display += self.hidden_word[i]
+            print(self.hidden_word_display)
+            for i in range(len(self._jumper.jumper)):
+                print(self._jumper.jumper[i])
