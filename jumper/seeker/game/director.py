@@ -59,11 +59,11 @@ class Director:
             self (Director): An instance of Director.
         """
         check_alphabet = self._check.check_alphabet(self.letter)
-        check_choices = self._check.check_choices(self.letter)
         if check_alphabet:
+            check_choices = self._check.check_choices(self.letter)
             if check_choices:
                 if self.letter not in self.guess_word:
-                    self._jumper.update_jumper(self.letter)
+                    self._jumper.update_jumper()
                 else:
                     self._check.check_letter(self.hidden_word, self.letter, self.guess_word)
             
@@ -77,12 +77,12 @@ class Director:
         if self.guess_word == self.hidden_word:
             self._is_playing = False
             print('\nYou win!\n')
-        elif self._jumper.jumper[0] == '     x':
+        elif self._jumper._jumper[0] == '     x':
             print('\nGame over!\n')
             self._is_playing = False
         self.hidden_word_display = ''
         for i in range(len(self.hidden_word)):
             self.hidden_word_display += self.hidden_word[i]
         print(self.hidden_word_display)
-        for i in range(len(self._jumper.jumper)):
-            print(self._jumper.jumper[i])
+        for i in range(len(self._jumper._jumper)):
+            print(self._jumper._jumper[i])

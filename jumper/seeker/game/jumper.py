@@ -29,7 +29,6 @@ class Jumper:
 
         Args:
             self (Jumper): An instance of Jumper.
-        
         """
         if self._jumper[0] == '    \\ /':
             del self._jumper[0]
