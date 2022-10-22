@@ -3,34 +3,48 @@ import random
 class Word:
     """A class that generates the random Word.
     
-    The responsibility of the class Word is to generates the random word that will be guessed.
+    The responsibility of the Word is to generates the random word that will be guessed.
+    
+    Attributes:
+        _word (list[int])
+        _hidden_word (list[int])
+        _random_word: (str)
+        _word: (list[str])
+    
     """
      
     def __init__(self):
-        """Constructs a new Seeker.
+        """Constructs a new word and hidden word.
 
         Args:
-            self (Seeker): An instance of Seeker.
+            self (Word): An instance of Word.
         """
-        self.word = []
-        self.hidden_word = []
+        self._word = []
+        self._hidden_word = []
 
     def generate_word(self):
-        """Generates the word according to a list.
+        """Selects a random word from a list.
 
         Args: 
-            self (TerminalService): An instance of TerminalService.
-            prompt (string): The prompt to display on the terminal.
+            self (Word): An instance of Word.
 
         Returns:
-            string: The user's input as text.
+            list: The random word as a list of letters.
         """
         words = ["apple", "banana", "city", "secular", "robot", "Ireland", "ant", "mars", "low", "sports", "car", "tree", "wolf", "sheep", "perpendicular", "cake", "meal"]
-        self.random_word = random.choice(words) #generates random word from the list
-        self.word = list(self.random_word)
-        return self.word #return random word
+        self._random_word = random.choice(words)
+        self._word = list(self._random_word)
+        return self._word
     
     def generate_hidden_word(self):
-        for i in range(len(self.word)):
-            self.hidden_word.append(' _ ')
-        return self.hidden_word
+        """Selects the hidden word based on the word.
+
+        Args: 
+            self (Word): An instance of Word.
+
+        Returns:
+            list: The hidden word as a list.
+        """
+        for i in range(len(self._word)):
+            self._hidden_word.append(' _ ')
+        return self._hidden_word

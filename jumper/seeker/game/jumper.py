@@ -1,40 +1,38 @@
 class Jumper:
-    """The person hiding from the Seeker.
+    """The jumper is the character with the parachutes representing the player.
     
-    The responsibility of Hider is to keep track of its location and distance from the seeker.
+    The responsibility of Jumper is to display the jumper, and updates the parachute.
     
     Attributes:
-        _location (int): The location of the hider (1-1000).
-        _distance (List[int]): The distance from the seeker.
+        _jumper (list[str]): The drawing of the jumper.
     """
 
     def __init__(self):
         """Constructs a new Jumper.
 
         Args:
-            self (jumper): An instance of Jumper.
+            self (Jumper): An instance of Jumper.
         """
-        self.jumper = ['    ___', '   /___\\', '   \\   /', '    \\ /', '     0', '   / | \\', '    / \\', '', '^^^^^^^^^^^^']
-        self.choices = []
+        self._jumper = ['    ___', '   /___\\', '   \\   /', '    \\ /', '     O', '   / | \\', '    / \\', '', '^^^^^^^^^^^^']
     
     def display_jumper(self):
-        for i in range(len(self.jumper)):
-            print(self.jumper[i])
-
-    def update_jumper(self, letter, alphabet):
-        """Gets a hint for the seeker.
+        """Displays the jumper.
 
         Args:
-            self (Hider): An instance of Hider.
-        
-        Returns:
-            string: A hint for the seeker.
+            self (Jumper): An instance of Jumper.
         """
-        letter = letter.lower()
-        if letter in alphabet:
-            if self.jumper[0] == '     0':
-                self.jumper[0] == '     X'
-            else:
-                del self.jumper[0]
+        for i in range(len(self._jumper)):
+            print(self._jumper[i])
+
+    def update_jumper(self):
+        """Updates the parachute of the jumper.
+
+        Args:
+            self (Jumper): An instance of Jumper.
+        
+        """
+        if self._jumper[0] == '    \\ /':
+            del self._jumper[0]
+            self._jumper[0] = '     x'
         else:
-            print('Invalid entry! Type one letter [a-z]')
+            del self._jumper[0]
