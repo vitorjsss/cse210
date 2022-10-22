@@ -39,4 +39,4 @@ root                    (project root folder)
 
 ## Authors
 
-* Vitor Soares ()
+* Vitor Soares (mam21008@byui.edu)
